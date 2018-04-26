@@ -48,7 +48,6 @@ public class SmsController {
             }
             sms.setSms_status("success");
             smsService.add(sms);
-            System.out.println("向数据库中插入一条sms记录: " + sms);
             result.success();
             result.message("成功发送短信消息!");
         }else {
@@ -90,7 +89,6 @@ public class SmsController {
             }
             sms.setSms_status("success");
             smsService.add(sms);
-            System.out.println("向数据库中插入一条sms记录: " + sms);
             result.success();
             result.message("成功发送短信消息!");
         }else {
@@ -112,7 +110,6 @@ public class SmsController {
             List<Sms> smsList = smsService.getSmsList(pageNum, pageSize);
             jsonResult.setResult(smsList);
             jsonResult.setStatus("success");
-            System.out.println("查询所有数据库记录: " + smsList);
             jsonResult.setMsg("查询短信推送记录成功!");
         }catch (Exception e){
             jsonResult.setResult(e.getClass().getName() + ":" + e.getMessage());
@@ -139,7 +136,6 @@ public class SmsController {
                 jsonResult.setResult(smsList);
                 jsonResult.setStatus("success");
                 jsonResult.setMsg("查询成功");
-                System.out.println("根据mobile查询数据库记录: " + smsList);
             }else {
                 jsonResult.setResult(smsList);
                 jsonResult.setMsg("查询结果为空，该记录不存在!");

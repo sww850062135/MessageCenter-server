@@ -32,7 +32,6 @@ public class JpushController {
         int code = jpushService.push(jpush);
         if (code==1) {
             jpushService.add(jpush);
-            System.out.println("向数据库插入一条数据: " + jpush);
             resultMapUtil.success();
             resultMapUtil.message("成功向app推送一条消息!");
         }else {
@@ -55,7 +54,6 @@ public class JpushController {
             if (!jPushList.isEmpty()){
                 jsonResult.setResult(jPushList);
                 jsonResult.setStatus("success");
-                System.out.println("查询数据库记录: " + jPushList);
                 jsonResult.setMsg("查询jpush记录成功!");
             }else {
                 jsonResult.setResult(jPushList);
@@ -107,7 +105,6 @@ public class JpushController {
             if (!jpushList.isEmpty()){
                 jsonResult.setResult(jpushList);
                 jsonResult.setStatus("success");
-                System.out.println("查询数据库记录: " + jpushList);
                 jsonResult.setMsg("查询jpush记录成功!");
             }else{
                 jsonResult.setResult(jpushList);
