@@ -18,6 +18,12 @@ public class JpushController {
     @Resource
     private JpushService jpushService;
 
+    /**
+     * jpush推送功能
+     * @param jpush
+     * @return
+     * @throws Exception
+     */
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/push", method = RequestMethod.POST)
     public ResultMapUtil push(@RequestBody Jpush jpush)throws Exception{

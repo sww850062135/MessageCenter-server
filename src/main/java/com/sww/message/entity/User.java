@@ -1,11 +1,11 @@
 package com.sww.message.entity;
 
 public class User {
-    private int id;
-    private String username;
-    private String password;
-    private String phone;
-    private String email;
+    private int id;                 //主键
+    private String username;        //账户名
+    private String password;        //密码
+    private String phone;           //手机号
+    private String email;           //邮箱
 
 
     public User(int id, String username, String password, String phone, String email) {

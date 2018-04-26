@@ -45,7 +45,12 @@ public class EmailServiceImpl implements EmailService {
     private String MailSender;*/
 
 
-
+    /**
+     * 发送邮件
+     * @param email
+     * @return
+     * @throws Exception
+     */
     @Override
     public int sendSimpleMail(Email email) throws Exception {
         logger.info("正在发送邮件....");
@@ -68,12 +73,21 @@ public class EmailServiceImpl implements EmailService {
         }
     }
 
-
+    /**
+     * 根据主键mail_id 查询记录
+     * @param mail_id
+     * @return
+     */
     @Override
     public Email getEmailById(Integer mail_id) {
         return emailMapper.getEmailById(mail_id);
     }
 
+    /**
+     * 根据邮件主题subject 查询记录
+     * @param subject
+     * @return
+     */
     @Override
     public List<Email> getEmailListBySubject(String subject ) {
         return emailMapper.getEmailListBySubject(subject);
@@ -92,11 +106,21 @@ public class EmailServiceImpl implements EmailService {
         return emailMapper.getEmailList();
     }
 
+    /**
+     * 根据收件方 email_to 查询记录
+     * @param email_to
+     * @return
+     */
     @Override
     public List<Email> getEmailListByEmail_to(String email_to) {
         return emailMapper.getEmailListByEmail_to(email_to);
     }
 
+    /**
+     * 增加一条记录
+     * @param email
+     * @return
+     */
     @Override
     public int add(Email email) {
         return emailMapper.add(email);

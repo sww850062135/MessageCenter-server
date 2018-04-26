@@ -119,7 +119,11 @@ public class EmailController {
         return ResponseEntity.ok(result);
     }
 
-    //根据 email_to 查询记录
+    /**
+     * 根据 email_to 查询记录
+     * @param email_to
+     * @return
+     */
     @CrossOrigin("*")            //允许跨域请求
     @RequestMapping(value = "/getEmailListByEmail_to", method = RequestMethod.GET)
     public ResponseEntity<JsonResult> getEmailListByEmail_to (String email_to){
