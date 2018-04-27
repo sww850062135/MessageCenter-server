@@ -1,6 +1,7 @@
 package com.sww.message.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -12,7 +13,7 @@ public class Email {
     @JSONField(serialize = false)
     private int mail_id;
 
-    @JSONField(name = "to")
+    @JSONField(name = "email_to")
     private String email_to;
 
     @JSONField(name = "subject")
@@ -32,6 +33,7 @@ public class Email {
         this.sendtime = sendtime;
     }
     public Email(){
+
     }
 
     public int getMail_id() {
@@ -56,10 +58,14 @@ public class Email {
     }
 
     //@JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")  //定制日期格式 方法1：在set方法里加该注解  方法2：在application.yml配置文件加上
-                                                    //spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
+    //spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
     public void setSendtime(Timestamp sendtime){
 
         this.sendtime=sendtime;
+    }
+
+    public Timestamp getSendtime() {
+        return sendtime;
     }
 
     //定制json数据格式

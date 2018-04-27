@@ -120,7 +120,7 @@ public class EmailController {
     }
 
     /**
-     * 根据 email_to 查询记录
+     * 根据收件人 email_to 查询邮件记录
      * @param email_to
      * @return
      */

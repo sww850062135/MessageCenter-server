@@ -18,8 +18,8 @@ public class TopicTest {
 
     @Test
     public void topicEmail() throws Exception{
-        EmailRabbit emailRabbit = new EmailRabbit((new Email(30,"850062135@qq.com", "rabbitmqTest", "TopicTest")));
-        emailService.sendEmailToEmailQueue(emailRabbit);
+        //EmailRabbit emailRabbit = new EmailRabbit((new Email(30,"850062135@qq.com", "rabbitmqTest", "TopicTest")));
+        //emailService.sendEmailToEmailQueue(emailRabbit);
     }
 
 

@@ -66,6 +66,7 @@ public class EmailServiceImpl implements EmailService {
         mailMessage.setText(email.getText());
         try {
             mailSender.send(mailMessage);
+            logger.info("成功发送一封邮件");
             return 1;                               //邮件发送成功，返回1
         }catch (Exception e){
             logger.error(e.getMessage());
@@ -73,32 +74,19 @@ public class EmailServiceImpl implements EmailService {
         }
     }
 
-    /**
-     * 根据主键mail_id 查询记录
-     * @param mail_id
-     * @return
-     */
+
     @Override
     public Email getEmailById(Integer mail_id) {
         return emailMapper.getEmailById(mail_id);
     }
 
-    /**
-     * 根据邮件主题subject 查询记录
-     * @param subject
-     * @return
-     */
+
     @Override
     public List<Email> getEmailListBySubject(String subject ) {
         return emailMapper.getEmailListBySubject(subject);
     }
 
-    /**
-     *
-     * @param pageNum      当前页
-     * @param pageSize     当前页面展示的记录数目
-     * @return
-     */
+
     @Override
     public List<Email> getEmailList(int pageNum, int pageSize) throws Exception {
         //使用分页插件
@@ -106,21 +94,13 @@ public class EmailServiceImpl implements EmailService {
         return emailMapper.getEmailList();
     }
 
-    /**
-     * 根据收件方 email_to 查询记录
-     * @param email_to
-     * @return
-     */
+
     @Override
     public List<Email> getEmailListByEmail_to(String email_to) {
         return emailMapper.getEmailListByEmail_to(email_to);
     }
 
-    /**
-     * 增加一条记录
-     * @param email
-     * @return
-     */
+
     @Override
     public int add(Email email) {
         return emailMapper.add(email);
