@@ -2,7 +2,9 @@ package com.sww.message.controller;
 
 import com.sww.message.entity.JsonResult;
 import com.sww.message.entity.Sms;
+import com.sww.message.entity.Template;
 import com.sww.message.service.SmsService;
+import com.sww.message.service.TemplateService;
 import com.sww.message.util.ResultMapUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +17,8 @@ import java.util.List;
 public class SmsController {
     @Resource
     private SmsService smsService;
-
+    @Resource
+    private TemplateService templateService;
 
     /**
      * 指定模版单发
@@ -95,6 +98,66 @@ public class SmsController {
             result.fail(1001);
             result.message("发送失败!");
         }
+        return result;
+    }
+
+    /**
+     * 增加短信模版
+     * @param template
+     * @return
+     * @throws Exception
+     */
+    @CrossOrigin("*")
+    @RequestMapping(value = "/addSmsTemplate", method = RequestMethod.POST)
+    public ResultMapUtil addSmsTemplate(@RequestBody Template template) throws Exception{
+        ResultMapUtil result = new ResultMapUtil();
+        int code = smsService.AddSmsTemplate(template);
+        if (code==1){
+            templateService.add(template); //向数据库插入一条短信模版数据
+            result.success();
+            result.message("成功增加一条短信模版");
+        }else {
+            result.fail(1001);
+            result.message("创建模版失败!");
+        }
+        return result;
+    }
+
+    /**
+     * 查询短信模版
+     * @param template
+     * @param page_num
+     * @param page_size
+     * @return
+     */
+    @CrossOrigin("*")
+    @RequestMapping(value = "/getSmsTemplate", method = RequestMethod.GET)
+    public String getSmsTemplate(@RequestBody Template template, String page_num, String page_size){
+        String result = smsService.GetSmsTemplate(template, page_num, page_size);
+        return result;
+    }
+
+    /**
+     * 编辑短信模版
+     * @param template
+     * @return
+     */
+    @CrossOrigin("*")
+    @RequestMapping(value = "/editSmsTemplate", method = RequestMethod.POST)
+    public String editSmsTemplate(@RequestBody Template template){
+        String result = smsService.EditSmsTemplate(template);
+        return result;
+    }
+
+    /**
+     * 删除短信模版
+     * @param template
+     * @return
+     */
+    @CrossOrigin("*")
+    @RequestMapping(value = "", method = RequestMethod.DELETE)
+    public String deleterSmsTemplate(@RequestBody Template template){
+        String result = smsService.DeleterSmsTemplate(template);
         return result;
     }
 
